@@ -22,6 +22,7 @@ export const RightSideContainer = styled("div")`
   flex: 1;
   z-index: 97;
   overflow-y: auto;
+  background-color: #fffff1;
 `;
 
 export const StyledLink = styled(Link)`
@@ -49,4 +50,5 @@ export const UserDetailsWrapper = styled("div")(({ theme }) => ({
   fontSize: 16,
   justifyContent: "flex-start",
   borderBottom: "1px solid #ccc",
+  backgroundColor: "#fffff1",
 }));

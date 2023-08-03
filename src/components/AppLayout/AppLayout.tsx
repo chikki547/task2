@@ -12,13 +12,15 @@ import { Typography } from "@mui/material";
 import { getApi } from "../../services/api/callApis";
 import { useGetUser } from "../../context/UserDataProvider";
 import { UserOutlined, PhoneFilled, MailTwoTone } from "@ant-design/icons";
+import { useLocation } from "react-router-dom";
 
 type Props = {};
 const x = Math.floor(Math.random() * 10) + 1;
 
 const AppLayout = (props: Props) => {
   const { data, setData } = useGetUser();
-
+  const location = useLocation();
+  console.log({ location });
   useEffect(() => {
     const userData = async () => {
       const data = await getApi(`/users/${x}`);
@@ -44,10 +46,24 @@ const AppLayout = (props: Props) => {
         </UserDetailsWrapper>
 
         <StyledLink to={`/dashboard`} key={`/dashboard`}>
-          <Route>Dashboard</Route>
+          <Route
+            style={{
+              backgroundColor:
+                location.pathname === "/dashboard" ? "#fffff1" : "#fff",
+            }}
+          >
+            Dashboard
+          </Route>
         </StyledLink>
         <StyledLink to={`/blogs`} key={`/blogs`}>
-          <Route>Blogs</Route>
+          <Route
+            style={{
+              backgroundColor:
+                location.pathname === "/blogs" ? "#fffff1" : "#fff",
+            }}
+          >
+            Blogs
+          </Route>
         </StyledLink>
       </LeftSideNavbarWrapper>
       <RightSideContainer>
