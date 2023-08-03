@@ -22,12 +22,8 @@ const Blogs = (props: Props) => {
     <div style={{ display: "flex", padding: 32 }}>
       <Space size={16} wrap>
         {posts.map((item: any, index: number) => (
-          <Link to={"/blogs/" + index}>
-            <Card
-              title={item?.title}
-              key={index}
-              style={{ width: 270, height: 300 }}
-            >
+          <Link key={index} to={"/blogs/" + index}>
+            <Card title={item?.title} style={{ width: 270, height: 300 }}>
               <p>{item?.body}</p>
             </Card>
           </Link>

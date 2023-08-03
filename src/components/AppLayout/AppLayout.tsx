@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useCallback } from "react";
 import {
   Root,
   LeftSideNavbarWrapper,
@@ -15,12 +15,12 @@ import { UserOutlined, PhoneFilled, MailTwoTone } from "@ant-design/icons";
 import { useLocation } from "react-router-dom";
 
 type Props = {};
-const x = Math.floor(Math.random() * 10) + 1;
+export const x = Math.floor(Math.random() * 10) + 1;
 
 const AppLayout = (props: Props) => {
   const { data, setData } = useGetUser();
   const location = useLocation();
-  console.log({ location });
+
   useEffect(() => {
     const userData = async () => {
       const data = await getApi(`/users/${x}`);
@@ -33,16 +33,31 @@ const AppLayout = (props: Props) => {
     <Root>
       <LeftSideNavbarWrapper>
         <UserDetailsWrapper>
-          <Typography variant="body2" color="textPrimary">
-            <UserOutlined /> {data?.username}
-          </Typography>
-          <Typography variant="body2" color="textPrimary">
-            <PhoneFilled /> {data?.phone}
-          </Typography>
-          <Typography variant="body2" color="textPrimary">
-            <MailTwoTone /> {data?.address?.suite}, {data?.address?.street},{" "}
-            {data?.address?.city}
-          </Typography>
+          <div style={{ display: "flex" }}>
+            <UserOutlined /> &nbsp;
+            <Typography
+              data-testid="username"
+              variant="body2"
+              color="textPrimary"
+            >
+              {data?.username}
+            </Typography>
+          </div>
+          <div style={{ display: "flex" }}>
+            <PhoneFilled />
+            &nbsp;
+            <Typography data-testid="phone" variant="body2" color="textPrimary">
+              {data?.phone}
+            </Typography>
+          </div>
+          <div style={{ display: "flex" }}>
+            <MailTwoTone />
+            &nbsp;
+            <Typography id="address" variant="body2" color="textPrimary">
+              {data?.address?.suite}, {data?.address?.street},{" "}
+              {data?.address?.city}
+            </Typography>
+          </div>
         </UserDetailsWrapper>
 
         <StyledLink to={`/dashboard`} key={`/dashboard`}>
