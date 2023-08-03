@@ -15,8 +15,8 @@ const Post = (props: Props) => {
 
   if ((id === 0 || id) && posts && posts.length) {
     return !showForm ? (
-      <>
-        <div style={{ padding: 16 }}>
+      <div style={{ padding: 16 }}>
+        <div>
           <Typography variant="h5">title : {posts[id].title}</Typography>
           <Typography variant="body1"> {posts[id].body}</Typography>
         </div>
@@ -32,11 +32,23 @@ const Post = (props: Props) => {
             Edit
           </Button>
         </div>
-      </>
+      </div>
     ) : (
-      <>
-        <Input value={title} onChange={(e) => setTitle(e.target.value)} />
-        <Input value={body} onChange={(e) => setBody(e.target.value)} />
+      <div style={{ padding: 16 }}>
+        <Input
+          aria-label="title"
+          style={{ paddingBottom: "16px", marginBottom: "16px" }}
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+
+        <Input
+          aria-label="body"
+          style={{ paddingBottom: "16px", marginBottom: "16px" }}
+          value={body}
+          onChange={(e) => setBody(e.target.value)}
+        />
+
         <Button
           onClick={async () => {
             await putApi("/posts", { ...posts[id], title: title, body: body });
@@ -46,7 +58,7 @@ const Post = (props: Props) => {
         >
           Submit
         </Button>
-      </>
+      </div>
     );
   } else {
     return null;

@@ -1,3 +1,4 @@
+import { ButtonBase } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { Link } from "react-router-dom";
 //cssfor the app layout
@@ -27,3 +28,25 @@ export const StyledLink = styled(Link)`
   text-decoration: none;
   color: #fff;
 `;
+
+export const Route = styled(ButtonBase)(({ theme }) => ({
+  color: "#000",
+  display: "flex",
+  width: "100%",
+  padding: "8px 16px",
+  height: "45px",
+  fontSize: 16,
+  justifyContent: "flex-start",
+  borderBottom: "1px solid #ccc",
+}));
+
+export const UserDetailsWrapper = styled("div")(({ theme }) => ({
+  color: "#000",
+  display: "flex",
+  flexDirection: "column",
+  width: "100%",
+  padding: "8px 16px",
+  fontSize: 16,
+  justifyContent: "flex-start",
+  borderBottom: "1px solid #ccc",
+}));
